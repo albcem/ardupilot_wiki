@@ -206,6 +206,43 @@ The platform that is built depends on the directory where you run
    An additional component is required before you can build Plane -
    see next step!
 
+Using JSBSim
+------------
+
+For ArduPlane you can choose several possible simulators. A popular
+choice is JSBSim, which you can enable with the -f jsbsim option to SITL.
+
+JSBSim is a sophisticated flight
+simulator that is used as the core flight dynamics system for several
+well known flight simulation systems.
+
+In the same directory (your home directory) run these commands:
+
+::
+
+    git clone git://github.com/tridge/jsbsim.git
+    sudo apt-get install libtool libtool-bin automake autoconf libexpat1-dev
+
+If you are getting an error message saying you need a newer version of
+JSBSim then you can update it like this:
+
+::
+
+    cd jsbsim
+    git pull
+    ./autogen.sh --enable-libraries
+    make
+
+If using the JSBSim plane simulator you can specify a different JSBSim
+model than the default Rascal110 by specifying the model name using the
+-f parameter to sim_vehicle.py, like this:
+
+::
+
+    sim_vehicle.py -f jsbsim:MyModel --console --map
+
+the model should be in the **Tools/autotest/aircraft/** directory.
+
 FlightGear 3D View (Optional)
 -----------------------------
 
